@@ -179,12 +179,12 @@ int main(void)
   MX_SPI4_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-  //ghép nối sh1106: hiển thị lần
+  //ghép nối sh1106: hiển thị 1 lần
 	  char buf[100];
 	  uint8_t X = 0, Y = 0;
 	  SH1106_Init ();
 	  sprintf (buf, "%s", "RC522 RFID");
-	  SH1106_GotoXY (12,10); // goto 10, 10
+	  SH1106_GotoXY (12,12); // goto 10, 10
 
 	  SH1106_Puts(buf, &Font_11x18, 1);
 	  // hiển thị chuỗi buf, kích cỡ 11x18, màu là 1
@@ -200,8 +200,9 @@ int main(void)
   {
     /* USER CODE END WHILE */
 	  // hiển thị thời gian trên SH1106
+	  SH1106_Clear();
 	  GetTime();
-	  SH1106_GotoXY(1,30);
+	  SH1106_GotoXY(1,1);
 	  sprintf(buf,"%s",buff);
 	  SH1106_Puts(buf,&Font_7x10,1);
 	  SH1106_UpdateScreen();
