@@ -107,6 +107,7 @@ void TestDS1307()
 	Get_Time.year);
 
 	HAL_UART_Transmit(&huart1, buff, strlen(buff), 1000); // hiển thị lên hercules
+		// 1000 là thời gian tối đa để hàm đợi để DS1307 chuyển dữ liệu, tức là thực tế hàm có thể chỉ cần đợi 100ms rồi chương trình tiếp tục
 	HAL_Delay(500);
 	}
 }
@@ -178,7 +179,8 @@ int main(void)
   MX_SPI4_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-  // ghép nối sh1106
+  // ghép nối sh1106 
+	// hiển thị 1 lần trên chính SH1106
 	  char buf[100];
 	  uint8_t X = 0, Y = 0;
 	  SH1106_Init ();
